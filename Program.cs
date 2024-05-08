@@ -59,8 +59,12 @@ namespace adonet_db_videogame
                             break;
 
                             case "4":
-                                // Cancellare videogioco
-                                break;
+                            Console.Write("Inserisci il codice ID del videogioco che vuoi cancellare: ");
+                            long videogameIdDelete = long.Parse(Console.ReadLine());
+
+                            manager.DeleteVideoGameById(videogameIdDelete);
+                            break;
+                            
                             case "5":
                                 continua = false;
                                 Console.WriteLine("Programma chiuso.");

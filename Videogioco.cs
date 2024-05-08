@@ -144,5 +144,27 @@ namespace adonet_db_videogame
                     Console.WriteLine(ex.Message);
                 }
         }
+
+        public void DeleteVideoGameById(long id)
+        {
+            using (SqlConnection connessioneSql = new SqlConnection(STRINGA_DI_CONNESSIONE))
+                try 
+                {
+                    connessioneSql.Open();
+                    
+                    string query = @"DELETE 
+                                    FROM videogames
+                                    WHERE id = @id";
+                    using SqlCommand cmd = new SqlCommand(query, connessioneSql);
+                    
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
+                    cmd.ExecuteNonQuery();
+                                     
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+        }
     }
 }
